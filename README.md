@@ -32,12 +32,12 @@
 ## buy
 | Column          | Type    | Option     |
 | --------------- | ------- | ---------- |
-| credit          | integer | null:false |
 | post_number     | integer | null:false |
-| Prefectures     | sting   | null:false |
-| Municipality    | string  | null:false |
+| prefectures     | sting   | null:false |
+| municipality    | string  | null:false |
 | address         | integer | null:false |
-| phone_number    | integer | null:false |
+| phone_number    | string  | null:false |
+
 
 ## Association
 belongs_to :user
@@ -47,7 +47,7 @@ belongs_to :item
 | Column          | Type       | Option      |
 | --------------- | ---------- | ----------- |
 | user_id         | references | null:false, |
-| items_id        | references | null:false, | 
+| item_id         | references | null:false, | 
 
 ## Association
 - belongs_to :user
