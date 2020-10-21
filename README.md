@@ -14,16 +14,16 @@
 - has_many :buys
 
 ## items
-| Column          | Type    | Option     |
-| --------------- | ------- | ---------- |
-| name            | string  | null:false |
-| description     | text    | null:false |
-| category        | integer | null:false |
-| status          | integer | null:false |
-| delivery charge | integer | null:false |
-| sender          | integer | null:false |
-| delivery_date   | integer | null:false |
-| price           | integer | null:false |
+| Column             | Type    | Option     |
+| ------------------ | ------- | ---------- |
+| name               | string  | null:false |
+| description        | text    | null:false |
+| category_id        | integer | null:false |
+| status_id          | integer | null:false |
+| delivery_charge_id | integer | null:false |
+| sender_id          | integer | null:false |
+| delivery_date_id   | integer | null:false |
+| price              | integer | null:false |
 
 ## Association
 - belongs_to :user
