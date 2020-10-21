@@ -34,7 +34,7 @@
 | Column          | Type    | Option     |
 | --------------- | ------- | ---------- |
 | post_number     | string  | null:false |
-| prefectures     | sting   | null:false |
+| prefectures_id     | sting   | null:false |
 | municipality    | string  | null:false |
 | building_name   | string  |            |
 | address         | string  | null:false |
