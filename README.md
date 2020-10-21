@@ -1,24 +1,57 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
+| Column           | Type    | Option     |
+| ---------------- | ------- | ---------- |
+| nickname         | string  | null:false |
+| family_name      | string  | null:false |
+| family_name_kana | string  | null:false |
+| first_name       | string  | null:false |
+| first_name_kana  | string  | null:false |
+| birthday         | date    | null:false |
 
-Things you may want to cover:
+## Association
+- has_many :items
+- has_many :after_buys
 
-* Ruby version
+## items
+| Column             | Type      | Option                        |
+| ------------------ | --------- | ----------------------------- |
+| user               |references | null:false, foreign_key: true |
+| name               | string  | null:false                      |
+| description        | text    | null:false                      |
+| category_id        | integer | null:false                      |
+| status_id          | integer | null:false                      |
+| delivery_charge_id | integer | null:false                      |
+| sender_id          | integer | null:false                      |
+| delivery_date_id   | integer | null:false                      |
+| price              | integer | null:false                      |
 
-* System dependencies
+## Association
+- belongs_to :user
+- has_one :after_buy
 
-* Configuration
+## street_addresses
+| Column             | Type      | Option                        |
+| ------------------ | --------- | ----------------------------- |
+| post_number        | string    | null:false                    |
+| prefectures_id     | integer   | null:false                    |
+| municipality       | string    | null:false                    |
+| building_name      | string    |                               |
+| address            | string    | null:false                    |
+| phone_number       | string    | null:false                    |
+| after_buy          | reference | null:false, foreign_key: true |
 
-* Database creation
 
-* Database initialization
+## Association
+- belongs_to :after_buy
 
-* How to run the test suite
+## after_buysテーブル
+| Column       | Type       | Option                        |
+| ------------ | ---------- | ----------------------------- |
+| user         | references | null:false, foreign_key: true |
+| item         | references | null:false, foreign_key: true | 
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Association
+- belongs_to :user
+- belongs_to :item
+- has_one :street_address
