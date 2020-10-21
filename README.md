@@ -11,7 +11,7 @@
 
 ## Association
 - has_many :items
-- has_many :buys
+- has_many :street_addresses
 
 ## items
 | Column             | Type      | Option                        |
@@ -28,14 +28,15 @@
 
 ## Association
 - belongs_to :user
-- has_one :buy
+- has_one :street_address
 
-## street_address
+## street_addresses
 | Column          | Type    | Option     |
 | --------------- | ------- | ---------- |
 | post_number     | string  | null:false |
 | prefectures     | sting   | null:false |
 | municipality    | string  | null:false |
+| building_name   | string  |            |
 | address         | string  | null:false |
 | phone_number    | string  | null:false |
 
@@ -45,13 +46,11 @@
 - belongs_to :item
 - belongs_to :after_buy
 
-## after_buyテーブル
+## after_buysテーブル
 | Column       | Type       | Option                        |
 | ------------ | ---------- | ----------------------------- |
 | user         | references | null:false, foreign_key: true |
 | item         | references | null:false, foreign_key: true | 
 
 ## Association
-- belongs_to :user
-- belongs_to :item
 - has_one :street_address
