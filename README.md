@@ -1,34 +1,32 @@
 
 ## users テーブル
-| Column      | Type    | Option     |
-| ----------- | ------- | ---------- |
-| nickname    | string  | null:false |
-| family_name | string  | null:false |
-| first_name  | string  | null:false |
-| birth_year  | integer | null:false |
-| birth_month | integer | null:false |
-| birth_day   | integer | null:false | 
+| Column           | Type    | Option     |
+| ---------------- | ------- | ---------- |
+| nickname         | string  | null:false |
+| family_name      | string  | null:false |
+| family_name_kana | string  | null:false |
+| first_name       | string  | null:false |
+| first_name_kana  | string  | null:false |
+| birthday         | date    | null:false |
 
 ## Association
 - has_many :items
-- has_many :buy
+- has_many :buys
 
 ## items
 | Column          | Type    | Option     |
 | --------------- | ------- | ---------- |
 | name            | string  | null:false |
-| Description     | string  | null:false |
-| Category        | string  | null:false |
-| Status          | string  | null:false |
-| Delivery charge | string  | null:false |
-| sender          | string  | null:false |
-| Delivery_date   | string  | null:false |
+| description     | text    | null:false |
+| category        | integer | null:false |
+| status          | integer | null:false |
+| delivery charge | integer | null:false |
+| sender          | integer | null:false |
+| delivery_date   | integer | null:false |
 | price           | integer | null:false |
-| fee             | integer |            |
-| Profit          | integer |            |
 
 ## Association
-- belongs_to :users
+- belongs_to :user
 - has_one :buy
 
 ## buy
@@ -42,5 +40,15 @@
 | phone_number    | integer | null:false |
 
 ## Association
-belongs_to :users
-belongs_to :items
+belongs_to :user
+belongs_to :item
+
+## after_buyテーブル
+| Column          | Type       | Option      |
+| --------------- | ---------- | ----------- |
+| user_id         | references | null:false, |
+| items_id        | references | null:false, | 
+
+## Association
+- belongs_to :user
+- belongs_to :item
