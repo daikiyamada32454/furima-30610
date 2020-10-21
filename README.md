@@ -12,6 +12,7 @@
 ## Association
 - has_many :items
 - has_many :street_addresses
+- has_many :after_buys
 
 ## items
 | Column             | Type      | Option                        |
@@ -28,22 +29,21 @@
 
 ## Association
 - belongs_to :user
-- has_one :street_address
+- has_one :after_buy
 
 ## street_addresses
-| Column          | Type    | Option     |
-| --------------- | ------- | ---------- |
-| post_number     | string  | null:false |
-| prefectures_id     | sting   | null:false |
-| municipality    | string  | null:false |
-| building_name   | string  |            |
-| address         | string  | null:false |
-| phone_number    | string  | null:false |
+| Column             | Type      | Option                        |
+| ------------------ | --------- | ----------------------------- |
+| post_number        | string    | null:false                    |
+| prefectures_id     | integer   | null:false                    |
+| municipality       | string    | null:false                    |
+| building_name      | string    |                               |
+| address            | string    | null:false                    |
+| phone_number       | string    | null:false                    |
+| after_buy          | reference | null:false, foreign_key: true |
 
 
 ## Association
-- belongs_to :user
-- belongs_to :item
 - belongs_to :after_buy
 
 ## after_buysテーブル
@@ -53,4 +53,5 @@
 | item         | references | null:false, foreign_key: true | 
 
 ## Association
-- has_one :street_address
+- belongs_to :user
+- belongs_to :item
