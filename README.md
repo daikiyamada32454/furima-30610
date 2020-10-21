@@ -11,7 +11,6 @@
 
 ## Association
 - has_many :items
-- has_many :street_addresses
 - has_many :after_buys
 
 ## items
@@ -55,3 +54,4 @@
 ## Association
 - belongs_to :user
 - belongs_to :item
+- has_one :street_address
