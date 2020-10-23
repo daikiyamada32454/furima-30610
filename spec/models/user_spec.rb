@@ -25,6 +25,19 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include("Family name kana can't be blank")
     end  
+    it "emailが重複していると登録出来ない" do
+      @user.save
+      another_user = @user
+      another_user.email = @user.email
+      another_user.valid?
+      binding.pry
+      
+    end
+    it "emailに@がないと登録出来ない" do
+      @user.email = "aaaa"
+      @user.valid? 
+      expect(@user.errors.full_messages).to include("Email is invalid")
+    end
     it "first_nameが空だと登録できない" do
       @user.first_name = ""
       @user.valid?
