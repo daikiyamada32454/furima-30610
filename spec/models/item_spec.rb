@@ -52,9 +52,49 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Price can't be blank")
       end
       it "価格が300円以下であれば保存されない" do
-        @item.price = 200
+        @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include()
+        expect(@item.errors.full_messages).to include("Price is not included in the list")
+      end
+      it "価格が9999999円以上だと保存されない" do
+        @item.price = 10000000
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not included in the list")
+      end
+      it "価格が半角数字出ないと保存されない" do
+        @item.price = '５００'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not included in the list")
+      end
+      it "category_idが１の時は保存されない" do
+        @item.category_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Category must be other than 1")
+      end
+      it "status_idが１の場合保存されない" do
+        @item.status_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Status must be other than 1")
+      end
+      it "scheduleddelivery_idが１の場合保存されない" do
+        @item.scheduleddelivery_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Scheduleddelivery must be other than 1")
+      end
+      it "sender_idが１の場合保存されない" do
+          @item.sender_id = 1
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Sender must be other than 1")
+      end
+      it "scheduleddelivery_idが１の場合保存されない" do
+        @item.scheduleddelivery_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Scheduleddelivery must be other than 1")
+      end
+      it "画像がないと保存されない" do
+        @item.image = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Image can't be blank")
       end
     end
   end
