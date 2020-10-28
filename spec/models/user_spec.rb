@@ -92,7 +92,7 @@ RSpec.describe User, type: :model do
       it " パスワードが英字のみでは登録出来ない" do
         @user.password = "aaaa"
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password is invalid")
+        expect(@user.errors.full_messages).to include("Passwordit is invalid")
       end
     end
     context '新規登録がうまくいく時' do
