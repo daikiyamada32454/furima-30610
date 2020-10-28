@@ -9,7 +9,7 @@ FactoryBot.define do
     shippingcharges_id     {3}
     sender_id              {3}
     scheduleddelivery_id   {3}
-    price                  {"1000"}
+    price                  {1000}
 
   end
 end
