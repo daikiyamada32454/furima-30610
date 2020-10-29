@@ -139,9 +139,11 @@
           <%= image_tag "item-sample.png", class: "item-img" %>
 
           <%# 商品が売れていればsold outを表示しましょう %>
+          <% if @after_buys %>
           <div class='sold-out'>
             <span>Sold Out!!</span>
           </div>
+          <% end %>
           <%# //商品が売れていればsold outを表示しましょう %>
 
         </div>
@@ -190,10 +192,6 @@
   </div>
   <%# /商品一覧 %>
 </div>
-
-<% if user_signed_in?%>
-
-<% end %>
 
 <div class='purchase-btn'>
   <span class='purchase-btn-text'>出品する</span>

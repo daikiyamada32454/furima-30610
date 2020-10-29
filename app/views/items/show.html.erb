@@ -9,9 +9,11 @@
     <div class='item-img-content'>
       <%= image_tag "item-sample.png" ,class:"item-box-img" %>
       <%# 商品が売れている場合は、sold outを表示しましょう %>
+      <% if @after_buys %>
       <div class='sold-out'>
         <span>Sold Out!!</span>
       </div>
+      <% end %>
       <%# //商品が売れている場合は、sold outを表示しましょう %>
     </div>
     <div class="item-price-box">
@@ -34,7 +36,6 @@
     <% end %>
     <%# //商品が売れていない場合はこちらを表示しましょう %>
 
-
     <%# //ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
 
     <div class="item-explain-box">
@@ -44,27 +45,27 @@
       <tbody>
         <tr>
           <th class="detail-item">出品者</th>
-          <td class="detail-value"><%= "出品者名" %></td>
+          <td class="detail-value"><%= @item.user_id %></td>
         </tr>
         <tr>
           <th class="detail-item">カテゴリー</th>
-          <td class="detail-value"><%= "カテゴリー名" %></td>
+          <td class="detail-value"><%= @item.category_id %></td>
         </tr>
         <tr>
           <th class="detail-item">商品の状態</th>
-          <td class="detail-value"><%= "商品の状態" %></td>
+          <td class="detail-value"><%= @item.status_id%></td>
         </tr>
         <tr>
           <th class="detail-item">配送料の負担</th>
-          <td class="detail-value"><%= "発送料の負担" %></td>
+          <td class="detail-value"><%= @item.shippingcharges_id %></td>
         </tr>
         <tr>
           <th class="detail-item">発送元の地域</th>
-          <td class="detail-value"><%= "発送元の地域" %></td>
+          <td class="detail-value"><%= @item.sender_id %></td>
         </tr>
         <tr>
           <th class="detail-item">発送日の目安</th>
-          <td class="detail-value"><%= "発送日の目安" %></td>
+          <td class="detail-value"><%= @item.scheduleddelivery_id %></td>
         </tr>
       </tbody>
     </table>
