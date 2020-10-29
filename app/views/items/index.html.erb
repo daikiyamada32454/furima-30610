@@ -131,8 +131,13 @@
     <ul class='item-lists'>
 
       <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
+<<<<<<< Updated upstream
+=======
+  <% if @item = Item.order("id")%>
+    <% @item.each do |item|%>
+>>>>>>> Stashed changes
       <li class='list'>
-        <%= link_to "#" do %>
+        <%= link_to item_path(item.id), method: :get do %>
         <div class='item-img-content'>
           <%= image_tag "item-sample.png", class: "item-img" %>
 
@@ -156,11 +161,16 @@
           </div>
         </div>
         <% end %>
+<<<<<<< Updated upstream
+=======
+    <% end %>
+>>>>>>> Stashed changes
       </li>
       <%# //商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
 
       <%# 商品がない場合のダミー %>
       <%# 商品がある場合は表示されないようにしましょう %>
+  <% else %>
       <li class='list'>
         <%= link_to '#' do %>
         <%= image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png", class: "item-img" %>
@@ -184,7 +194,11 @@
   </div>
   <%# /商品一覧 %>
 </div>
+<<<<<<< Updated upstream
 <% if user_signed_in?%>
+=======
+<% end %>
+>>>>>>> Stashed changes
 <div class='purchase-btn'>
   <span class='purchase-btn-text'>出品する</span>
   <a href= /items/new>
