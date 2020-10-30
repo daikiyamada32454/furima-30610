@@ -33,6 +33,11 @@ class ItemsController < ApplicationController
       render:edit
      end
    end
+
+   def destroy
+     @item = Item.find(params[:id])
+     @item.destroy
+   end
   private
   def item_params
   params.require(:item).permit(:image,:name, :category_id, :status_id, :shippingcharges_id , :sender_id, :scheduleddelivery_id, :price, :description).merge(user_id: current_user.id)
