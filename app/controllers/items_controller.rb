@@ -39,6 +39,8 @@ class ItemsController < ApplicationController
      if @item.destroy
       redirect_to root_path
      end
+     else
+      render:edit
    end
   end
   private
