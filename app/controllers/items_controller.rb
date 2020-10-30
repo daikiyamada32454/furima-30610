@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-
+  before_action :set_item, only: [:show, :edit]
    def index
     @item = Item.order("id")
    end 
@@ -18,11 +18,9 @@ class ItemsController < ApplicationController
   end
   
   def show
-    @item = Item.find(params[:id])
   end
   
   def edit
-    @item = Item.find(params[:id])
     unless current_user == @item.user
       redirect_to action: :index
     end
@@ -39,6 +37,9 @@ class ItemsController < ApplicationController
   private
   def item_params
   params.require(:item).permit(:image,:name, :category_id, :status_id, :shippingcharges_id , :sender_id, :scheduleddelivery_id, :price, :description).merge(user_id: current_user.id)
+  end
+  def set_item
+    @item = Item.find(params[:id])
   end
 end
 
