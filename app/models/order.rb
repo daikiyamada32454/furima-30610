@@ -1,3 +1,7 @@
 class Order < ApplicationRecord
-  validates :parice, presence: true 
+
+  belongs_to :user
+  belongs_to :item
+  has_one :street_address 
+
 end
