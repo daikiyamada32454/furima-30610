@@ -28,7 +28,7 @@
 
 ## Association
 - belongs_to :user
-- has_one :after_buy
+- has_one :order
 
 ## street_addresses
 | Column             | Type      | Option                        |
@@ -39,13 +39,13 @@
 | building_name      | string    |                               |
 | address            | string    | null:false                    |
 | phone_number       | string    | null:false                    |
-| after_buy          | reference | null:false, foreign_key: true |
+| order              | reference | null:false, foreign_key: true |
 
 
 ## Association
-- belongs_to :after_buy
+- belongs_to :order
 
-## after_buysテーブル
+## orderテーブル
 | Column       | Type       | Option                        |
 | ------------ | ---------- | ----------------------------- |
 | user         | references | null:false, foreign_key: true |
