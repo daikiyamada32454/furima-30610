@@ -4,6 +4,7 @@ FactoryBot.define do
     sender_id            {2}
     municipality        {"大阪"}
     address             {"大阪市"}
+    building_name       {"ダミー"}
     phone_number        {"11111111111"}
     token {"tok_abcdefghijk00000000000000000"}
     association :user

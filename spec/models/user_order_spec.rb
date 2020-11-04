@@ -12,6 +12,10 @@ RSpec.describe UserOrder, type: :model do
       it "全てのカラムに値が入っていると登録できる" do
         expect(@user_order).to be_valid
       end
+      it "建物名がなくても保存できる" do
+        @user_order.building_name = ""
+        expect(@user_order).to be_valid
+      end
     end
     context '商品購入がうまくいかない時' do
       it "クレジットカード情報が入ってない時" do
@@ -23,6 +27,11 @@ RSpec.describe UserOrder, type: :model do
         @user_order.post_number = ""
         @user_order.valid?
         expect(@user_order.errors.full_messages).to include("Post number can't be blank")
+      end
+      it "郵便番号に『-』がない時保存できない" do 
+        @user_order.post_number = "1111111"
+        @user_order.valid?
+        expect(@user_order.errors.full_messages).to include("Post number is invalid")
       end
       it "都道府県がない時" do
         @user_order.sender_id = ""
@@ -43,6 +52,16 @@ RSpec.describe UserOrder, type: :model do
         @user_order.phone_number = ""
         @user_order.valid?
         expect(@user_order.errors.full_messages).to include("Phone number can't be blank")
+      end
+      it "電話番号に『-』があると保存できない" do
+        @user_order.phone_number = "111-1111-1111"
+        @user_order.valid?
+        expect(@user_order.errors.full_messages).to include("Phone number is invalid")
+      end
+      it "電話番号は12文字以上だと保存できない" do
+        @user_order.phone_number = "111-1111-11111"
+        @user_order.valid?
+        expect(@user_order.errors.full_messages).to include("Phone number is invalid")
       end
     end
   end

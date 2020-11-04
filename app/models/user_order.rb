@@ -9,12 +9,13 @@ class UserOrder
     validates :municipality
     validates :address
     validates :phone_number, format: {with:/\A[0-9]+\z/}
+    validates :phone_number, length: {maximum: 11}
     validates :token
   end
+  validates :sender_id, numericality:{other_than: 1 }
 
   def save
     order = Order.create(user_id:user_id, item_id:item_id)
     StreetAddress.create(post_number: post_number, sender_id: sender_id, municipality: municipality, building_name: building_name, address: address, phone_number: phone_number, order_id: order.id)
   end
-  validates :sender_id, numericality:{other_than: 1 }
 end
